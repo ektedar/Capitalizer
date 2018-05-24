@@ -17,7 +17,7 @@ namespace ConsoleApp2
 
         public static string Capitalize(string transc, char delimiter)
         {
-            var sentences = transc.Split(delimiter);
+            var sentences = transc.Split(new[] { delimiter }, StringSplitOptions.RemoveEmptyEntries);
             List<string> list = new List<string>();
             string finalSent = "";
 
@@ -38,9 +38,7 @@ namespace ConsoleApp2
                 }
             }
 
-            string s = delimiter.ToString();
-            string[] completedArr = list.ToArray();
-            finalSent = String.Join(s, completedArr);
+            finalSent += String.Join(delimiter.ToString(), list.ToArray()) + ".";
 
             return finalSent;
         }
